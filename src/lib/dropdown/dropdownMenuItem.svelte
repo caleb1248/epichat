@@ -20,10 +20,5 @@
 		background-color: #555;
 		padding: 1rem;
 		display: flex;
-		a {
-			color: inherit;
-			background-color: inherit;
-			text-decoration: none;
-		}
 	}
 </style>

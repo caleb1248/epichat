@@ -3,7 +3,7 @@
 	import { signOut } from 'firebase/auth';
 	import './+page.css';
 	import Dropdown from '$lib/dropdown/dropdown.svelte';
-	import DropdownLink from '$lib/dropdown/dropdownLink.svelte';
+	import DropdownLink from '$lib/dropdown/dropdownMenuItem.svelte';
 	import { goto } from '$app/navigation';
 </script>
 
@@ -13,15 +13,15 @@
 
 <nav>
 	<span class="title">Chat thingy</span>
-	<Dropdown let:setIsOpen>
-		<button slot="dropdownBtn" class="btn icon">
+	<Dropdown>
+		<button slot="dropdownBtn" let:setIsOpen class="btn icon" on:click={() => setIsOpen(true)}>
 			<svg class="threedot" width="16" height="16" viewBox="10 4 4 16"
 				><path
 					d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
 				/></svg
 			>
 		</button>
-		<DropdownLink {setIsOpen} on:click={() => goto('/app/account')}>My account</DropdownLink>
+		<DropdownLink on:click={() => goto('/app/account')}>My account</DropdownLink>
 	</Dropdown>
 </nav>
 <main>

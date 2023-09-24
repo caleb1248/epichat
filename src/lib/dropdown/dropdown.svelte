@@ -11,7 +11,7 @@
 </script>
 
 <div class="dropdown">
-	<slot name="dropdownBtn" />
+	<slot name="dropdownBtn" {setIsOpen} />
 	<div class="dropdown-content" style="display: {isOpen ? 'block' : 'none'}">
 		<slot {setIsOpen} />
 	</div>
