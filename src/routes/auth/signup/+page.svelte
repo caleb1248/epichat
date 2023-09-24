@@ -26,7 +26,7 @@
 			disabled={password !== passwordConfirm || !password || !passwordConfirm || !email}
 			on:click={() => signUp()}>Sign Up</button
 		>
-		<button on:click={() => signInWithGoogle(auth)}> Sign in with google</button>
+		<button on:click={() => signInWithGoogle(auth)}> Sign up with google</button>
 	</div>
 </main>
 
