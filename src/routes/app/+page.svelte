@@ -5,6 +5,7 @@
 	import Dropdown from '$lib/dropdown/dropdown.svelte';
 	import DropdownLink from '$lib/dropdown/dropdownMenuItem.svelte';
 	import { goto } from '$app/navigation';
+	import DropdownButton from '$lib/dropdown/dropdownButton.svelte';
 </script>
 
 <svelte:head>
@@ -14,13 +15,13 @@
 <nav>
 	<span class="title">Chat thingy</span>
 	<Dropdown>
-		<button slot="dropdownBtn" let:setIsOpen class="btn icon" on:click={() => setIsOpen(true)}>
+		<DropdownButton slot="dropdownBtn">
 			<svg class="threedot" width="16" height="16" viewBox="10 4 4 16"
 				><path
 					d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
 				/></svg
 			>
-		</button>
+		</DropdownButton>
 		<DropdownLink on:click={() => goto('/app/account')}>My account</DropdownLink>
 	</Dropdown>
 </nav>
@@ -43,24 +44,10 @@
 			font-size: 1.5rem;
 			margin-left: 1rem;
 		}
+	}
 
-		button.icon {
-			box-sizing: content-box;
-			padding: 1rem;
-			width: 16px;
-			height: 16px;
-			border-radius: 1000px;
-			margin-right: 1rem;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			&:hover {
-				background-color: #555;
-			}
-			svg.threedot {
-				margin: 0;
-			}
-		}
+	svg.threedot {
+		margin: 0;
 	}
 
 	main {

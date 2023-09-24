@@ -5,25 +5,21 @@
 	if (!setIsOpen) console.error('Dropdown component not parent');
 </script>
 
-<div class="link-container">
-	<button
-		on:click={() => {
-			setIsOpen(true);
-		}}
-	>
-		<slot />
-	</button>
-</div>
+<button class="dropdown-button" on:click={() => setIsOpen(true)}><slot /></button>
 
 <style lang="scss">
-	div.link-container {
-		background-color: #555;
+	button.dropdown-button {
+		box-sizing: content-box;
 		padding: 1rem;
+		width: 16px;
+		height: 16px;
 		display: flex;
-		button {
-			font: inherit;
-			background: inherit;
-			border: none;
+		justify-content: center;
+		align-items: center;
+		background: inherit;
+		border: none;
+		&:hover {
+			background-color: #555;
 		}
 	}
 </style>

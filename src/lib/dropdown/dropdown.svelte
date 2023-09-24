@@ -10,7 +10,7 @@
 	setContext('dropdown', { setIsOpen });
 </script>
 
-<div class="dropdown">
+<div class="dropdown" on:blur={() => setIsOpen(false)}>
 	<slot name="dropdownBtn" {setIsOpen} />
 	<div class="dropdown-content" style="display: {isOpen ? 'block' : 'none'}">
 		<slot {setIsOpen} />
@@ -27,7 +27,7 @@
 		position: absolute;
 		right: 0;
 		min-width: 100px;
-		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+		box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 		z-index: 1;
 	}
 </style>
