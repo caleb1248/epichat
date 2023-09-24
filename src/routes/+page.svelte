@@ -13,9 +13,8 @@
 </svelte:head>
 <main>
 	<h1>Chat app</h1>
-	<button class="btn glow" on:click={() => signInWithGoogle(auth).then(() => goto('/app'))}
-		>Log in</button
-	>
+	<button class="btn glow" on:click={() => goto('/auth/login')}>Log in</button>
+	<button class="btn glow" on:click={() => goto('/auth/signup')}>Sign up</button>
 </main>
 
 <style>
