@@ -1,14 +1,17 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
+	import { createEventDispatcher, getContext } from 'svelte';
 
 	const setIsOpen = (getContext('dropdown') as { setIsOpen: (value: boolean) => void }).setIsOpen!;
 	if (!setIsOpen) console.error('Dropdown component not parent');
+
+	const dispatcher = createEventDispatcher();
 </script>
 
 <div class="link-container">
 	<button
 		on:click={() => {
-			setIsOpen(true);
+			setIsOpen(false);
+			dispatcher('click');
 		}}
 	>
 		<slot />
@@ -22,8 +25,13 @@
 		display: flex;
 		button {
 			font: inherit;
+			color: #222;
 			background: inherit;
 			border: none;
+			cursor: pointer;
+			&:hover {
+				color: black;
+			}
 		}
 	}
 </style>

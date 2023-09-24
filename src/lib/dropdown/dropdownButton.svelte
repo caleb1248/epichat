@@ -6,20 +6,3 @@
 </script>
 
 <button class="dropdown-button" on:click={() => setIsOpen(true)}><slot /></button>
-
-<style lang="scss">
-	button.dropdown-button {
-		box-sizing: content-box;
-		padding: 1rem;
-		width: 16px;
-		height: 16px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: inherit;
-		border: none;
-		&:hover {
-			background-color: #555;
-		}
-	}
-</style>

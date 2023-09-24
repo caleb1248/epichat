@@ -25,8 +25,9 @@
 
 	.dropdown-content {
 		position: absolute;
-		right: 0;
-		min-width: 100px;
+		top: var(--dropdown-top);
+		right: 10px;
+		white-space: var(--white-space);
 		box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 		z-index: 1;
 	}

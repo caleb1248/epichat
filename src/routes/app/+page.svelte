@@ -1,9 +1,8 @@
 <script>
 	import { auth } from '$lib/firebase';
 	import { signOut } from 'firebase/auth';
-	import './+page.css';
 	import Dropdown from '$lib/dropdown/dropdown.svelte';
-	import DropdownLink from '$lib/dropdown/dropdownMenuItem.svelte';
+	import DropdownMenuItem from '$lib/dropdown/dropdownMenuItem.svelte';
 	import { goto } from '$app/navigation';
 	import DropdownButton from '$lib/dropdown/dropdownButton.svelte';
 </script>
@@ -14,7 +13,7 @@
 
 <nav>
 	<span class="title">Chat thingy</span>
-	<Dropdown>
+	<Dropdown --white-space="nowrap" --dropdown-top="4rem">
 		<DropdownButton slot="dropdownBtn">
 			<svg class="threedot" width="16" height="16" viewBox="10 4 4 16"
 				><path
@@ -22,7 +21,7 @@
 				/></svg
 			>
 		</DropdownButton>
-		<DropdownLink on:click={() => goto('/app/account')}>My account</DropdownLink>
+		<DropdownMenuItem on:click={() => goto('/app/settings/profile')}>Your profile</DropdownMenuItem>
 	</Dropdown>
 </nav>
 <main>
@@ -44,6 +43,22 @@
 			font-size: 1.5rem;
 			margin-left: 1rem;
 		}
+		:global(button.dropdown-button) {
+			box-sizing: content-box;
+			padding: 1rem;
+			width: 16px;
+			height: 16px;
+			display: flex;
+			justify-content: center;
+			border-radius: 1000px;
+			margin-right: 1rem;
+			align-items: center;
+			background: inherit;
+			border: none;
+			&:hover {
+				background-color: #555;
+			}
+		}
 	}
 
 	svg.threedot {
@@ -52,10 +67,10 @@
 
 	main {
 		height: calc(100% - 3.4rem);
-	}
-
-	div.sidebar {
-		width: 300px;
-		border-right: 1px solid #777;
+		div.sidebar {
+			width: 300px;
+			height: 100%;
+			border-right: 1px solid #777;
+		}
 	}
 </style>

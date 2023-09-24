@@ -2,10 +2,10 @@
 	import { goto } from '$app/navigation';
 	import { signInWithGoogle } from '$lib/auth';
 	import { auth } from '$lib/firebase';
+	import { onMount } from 'svelte';
 
 	import './homepage.css';
-
-	if (auth.currentUser) goto('/app');
+	onMount(() => setTimeout(() => (auth.currentUser ? goto('/app') : null), 500));
 </script>
 
 <svelte:head>
