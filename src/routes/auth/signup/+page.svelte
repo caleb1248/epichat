@@ -10,21 +10,34 @@
 	let email: string;
 	let password: string;
 	let passwordConfirm: string;
+	let error: string = '<br>';
 
 	async function signUp() {
-		await createUserWithEmailAndPassword(auth, email, password);
+		if (!email) {
+			error = 'Provide an email';
+			return;
+		} else if (!password) {
+			error = 'Provide a password';
+			return;
+		} else if (password != passwordConfirm) {
+			error = 'Passwords do not match';
+			return;
+		}
+		createUserWithEmailAndPassword(auth, email, password).catch((err) => {
+			let error = err.message.replace('Firebase: ', '');
+		});
 	}
 </script>
 
 <main>
 	<div class="signup-container">
-		<p class="error" />
+		<p class="error">{@html error}</p>
 		<input type="text" placeholder="Email" bind:value={email} />
 		<input type="password" placeholder="Password" bind:value={password} />
 		<input type="password" placeholder="Confirm password" bind:value={passwordConfirm} />
 		<button
-			disabled={password !== passwordConfirm || !password || !passwordConfirm || !email}
-			on:click={() => signUp()}>Sign Up</button
+			on:click={() => signUp()}
+			class:disabled={!email || !password || password != passwordConfirm}>Sign Up</button
 		>
 		<button on:click={() => signInWithGoogle(auth)}> Sign up with google</button>
 	</div>
@@ -45,7 +58,6 @@
 			min-width: 300px;
 			height: 30vmin;
 			> p.error {
-				font-size: 0.75rem;
 				color: red;
 			}
 			> input {
@@ -90,7 +102,7 @@
 				vertical-align: baseline;
 				width: auto;
 
-				&:not(:disabled) {
+				&:not(.disabled) {
 					&:hover,
 					&:focus {
 						background-color: #fb8332;
@@ -107,7 +119,7 @@
 						transform: translateY(0);
 					}
 				}
-				&:disabled {
+				&.disabled {
 					background-color: #333;
 					color: #444;
 					cursor: default;

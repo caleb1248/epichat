@@ -7,17 +7,18 @@
 		if (user) goto('/app');
 	});
 
-	let email: string;
-	let password: string;
+	let email: string = '';
+	let password: string = '';
+	let error: string = '';
 
-	async function signIn() {
-		await signInWithEmailAndPassword(auth, email, password);
+	function signIn() {
+		signInWithEmailAndPassword(auth, email, password).catch((reason) => (error = reason.message));
 	}
 </script>
 
 <main>
 	<div class="signup-container">
-		<p class="error" />
+		<p class="error">{error}</p>
 		<input type="text" placeholder="Email" bind:value={email} />
 		<input type="password" placeholder="Password" bind:value={password} />
 		<button disabled={!password || !email} on:click={() => signIn()}>Login</button>
